@@ -38,7 +38,7 @@ def colors():
     r = redis.Redis()
     r.publish("foo", dumps(sms))
 
-    return response(response="Color changed.", status=200, mimetype="text/plain")
+    return Flask.Response(response="Color changed.", status=200, mimetype="text/plain")
 
 @app.route("/")
 def home():
