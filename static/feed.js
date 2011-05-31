@@ -1,7 +1,9 @@
 function msgReceived(msg){
     console.log(eval("(" + msg + ")"));
     var data = eval("(" + msg + ")");
-    $("body").append("<div>" + data.city + ", " + data.state + "</div>").css("background-color", data.color);
+    var newColor = $("<div>" + data.city + ", " + data.state + "</div>");
+    newColor.css("background-color", data.color);
+    $("body").append(newColor);
 }
 
 $(document).ready(function(){
