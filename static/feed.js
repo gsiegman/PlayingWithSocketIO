@@ -3,7 +3,7 @@ function msgReceived(msg){
     var data = eval("(" + msg + ")");
     var newColor = $("<div>" + data.city + ", " + data.state + "</div>");
     newColor.css("background-color", data.color);
-    $("body").prepend(newColor);
+    $("#colors").prepend(newColor);
 }
 
 $(document).ready(function(){
