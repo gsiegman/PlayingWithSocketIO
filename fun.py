@@ -26,6 +26,17 @@ def publish():
     else:
         return render_template("publish.html")
 
+@app.route("/colors", methods=["POST"])
+def colors():
+    sms = {
+        "from": request.form["From"],
+        "color": request.form["Body"]
+    }
+
+    r = redis.Redis()
+    r.publish("foo", dumps(me))
+
+    return "Color changed!"
 
 @app.route("/")
 def home():
