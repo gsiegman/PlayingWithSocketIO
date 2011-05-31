@@ -37,12 +37,17 @@ def colors():
     r = redis.Redis()
     r.publish("foo", dumps(sms))
     r.lpush("colors", "%s:%s:%s:%s" % (request.form["From"], sms["city"], sms["state"], sms["color"]))
-    
+
     return "Color changed"
 
 @app.route("/")
 def home():
-    return render_template("home.html")
+    r = redis.Redis()
+    color_list = r.lrange("colors", 0, -1)
+
+    colors = [{"color": color[3], "city": color[1], "state": [2]} for color in color_list]
+
+    return render_template("home.html", colors=colors)
 
 
 if __name__ == "__main__":

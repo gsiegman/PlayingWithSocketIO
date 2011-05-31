@@ -16,6 +16,9 @@
 </head>
 
 <body>
+	{% for color in color_list %}
+		<div style="background-color: {{ color.color }};">{{ color.city }}, {{ color.state }}</div>
+	{% endfor %}
 </body>
 
 </html>
