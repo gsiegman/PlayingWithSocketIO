@@ -43,9 +43,9 @@ def colors():
 @app.route("/")
 def home():
     r = redis.Redis()
-    color_list = r.lrange("colors", 0, -1).split(":")
+    color_list = r.lrange("colors", 0, -1)
 
-    colors = [{"color": color[3], "city": color[1], "state": [2]} for color in color_list]
+    colors = [{"color": color.split(":")[3], "city": color.split(":")[1], "state": color.split(":")[2]} for color in color_list]
 
     return render_template("home.html", colors=colors)
 
