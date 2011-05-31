@@ -4,7 +4,7 @@ from json import dumps
 
 from flask import Flask
 from flask import render_template
-from flask import request
+from flask import request, response
 
 app = Flask(__name__)
 
@@ -38,7 +38,7 @@ def colors():
     r = redis.Redis()
     r.publish("foo", dumps(sms))
 
-    return
+    return response(response="Color changed.", status=200, mimetype="text/plain")
 
 @app.route("/")
 def home():
