@@ -38,7 +38,7 @@ def colors():
     r = redis.Redis()
     r.publish("foo", dumps(sms))
 
-    return "Color changed!"
+    return
 
 @app.route("/")
 def home():
