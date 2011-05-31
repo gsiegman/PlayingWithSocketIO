@@ -30,7 +30,9 @@ def publish():
 def colors():
     sms = {
         "from": request.form["From"],
-        "color": request.form["Body"]
+        "color": request.form["Body"],
+        "city": request.form["FromCity"],
+        "state": request.form["FromState"]
     }
 
     r = redis.Redis()
