@@ -43,7 +43,7 @@ def colors():
 @app.route("/")
 def home():
     r = redis.Redis()
-    color_list = r.lrange("colors", 0, -1)
+    color_list = r.lrange("colors", 0, -1).split(":")
 
     colors = [{"color": color[3], "city": color[1], "state": [2]} for color in color_list]
 
