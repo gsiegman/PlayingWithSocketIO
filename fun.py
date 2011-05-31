@@ -34,7 +34,7 @@ def colors():
     }
 
     r = redis.Redis()
-    r.publish("foo", dumps(me))
+    r.publish("foo", dumps(sms))
 
     return "Color changed!"
 
