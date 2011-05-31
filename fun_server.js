@@ -7,7 +7,6 @@ socket.on("connection", function(client){
   rc.subscribe("foo");
   
   rc.on("message", function(channel, message) {
-      console.log(message);
       client.send(message);
   });
   
