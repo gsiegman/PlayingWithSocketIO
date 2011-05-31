@@ -29,7 +29,6 @@ def publish():
 @app.route("/colors", methods=["POST"])
 def colors():
     sms = {
-        "from": request.form["From"],
         "color": request.form["Body"],
         "city": request.form["FromCity"],
         "state": request.form["FromState"]
@@ -37,7 +36,8 @@ def colors():
 
     r = redis.Redis()
     r.publish("foo", dumps(sms))
-
+    r.lpush("colors", "%s:%s:%s:%s" % (request.form["From"], sms["city"], sms["state"], sms["color"]))
+    
     return "Color changed"
 
 @app.route("/")
